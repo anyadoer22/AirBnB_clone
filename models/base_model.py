@@ -30,7 +30,8 @@ class BaseModel(object):
     def to_dict(self):
         """returns a dictionary containing all keys/values
         of __dict__ of the instance"""
-        self.__dict__["__class__"] = "{}".format(self.__class__.__name__)
-        self.__dict__["updated_at"] = self.updated_at.isoformat()
-        self.__dict__["created_at"] = self.created_at.isoformat()
-        return self.__dict__
+        specialdir = self.__dict__.copy()
+        specialdir["__class__"] = "{}".format(self.__class__.__name__)
+        specialdir["updated_at"] = self.updated_at.isoformat()
+        specialdir["created_at"] = self.created_at.isoformat()
+        return specialdir
