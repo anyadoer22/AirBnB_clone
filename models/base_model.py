@@ -13,8 +13,8 @@ class BaseModel(object):
     """
     def __init__(self):
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
 
     def __str__(self):
         """overide default string method"""
@@ -25,13 +25,12 @@ class BaseModel(object):
     def save(self):
         """update datetime atribute of updated_at to current time
         when method is called"""
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.today()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values
         of __dict__ of the instance"""
-        self.__dict__[__class__] = "{}".format(self.__class__.__name__)
-        for key, value in list(self.__dict__.items()):
-            if key ==  "updated_at" or key == "created_at":
-                datetime.isoformat(value)
+        self.__dict__["__class__"] = "{}".format(self.__class__.__name__)
+        self.__dict__["updated_at"] = self.updated_at.isoformat()
+        self.__dict__["created_at"] = self.created_at.isoformat()
         return self.__dict__
