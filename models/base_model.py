@@ -5,7 +5,7 @@
 
 import uuid
 from datetime import datetime
-
+import models
 
 class BaseModel(object):
     """The base class of the Airbnb project
@@ -29,6 +29,8 @@ class BaseModel(object):
                     self.__dict__[k] = datetime.strptime(v, ptrn)
                 else:
                     self.__dict__[k] = v
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """overide default string method"""
@@ -40,6 +42,8 @@ class BaseModel(object):
         """update datetime atribute of updated_at to current time
         when method is called"""
         self.updated_at = datetime.today()
+        models.storage.save()
+
 
     def to_dict(self):
         """returns a dictionary containing all keys/values
@@ -49,3 +53,4 @@ class BaseModel(object):
         specialdir["updated_at"] = self.updated_at.isoformat()
         specialdir["created_at"] = self.created_at.isoformat()
         return specialdir
+
