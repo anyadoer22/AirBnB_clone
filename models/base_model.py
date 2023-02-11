@@ -49,7 +49,7 @@ class BaseModel(object):
         """returns a dictionary containing all keys/values
         of __dict__ of the instance"""
         specialdir = self.__dict__.copy()
-        specialdir["__class__"] = "{}".format(self.__class__.__name__)
+        specialdir["__class__"] = self.__class__.__name__
         specialdir["updated_at"] = self.updated_at.isoformat()
         specialdir["created_at"] = self.created_at.isoformat()
         return specialdir
