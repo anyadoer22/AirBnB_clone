@@ -14,6 +14,16 @@ class HBNBCommand(cmd.Cmd):
     """Implement an entry point for managing models"""
 
     prompt = '(hbnb)'
+    __classes = {
+        "BaseModel",
+        "User",
+        "State",
+        "City",
+        "Place",
+        "Amenity",
+        "Review",
+    }
+
     def do_EOF(self, line):
         """EOF help quit."""
         print("")
@@ -23,6 +33,26 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program."""
         return True
 
+    def do_create(self, line):
+        """Create a new instance of BaseModel and print the id"""
+        args = line.split()
+
+        if len(args) == 2:
+            objname = args[0]
+            clsname = args[1]
+            if clsname not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+            else:
+                objname = eval(clsname)()
+                print(objname.id)
+                storage.save()
+        else:
+            print("** class name missing **")
+    def do_show(self, line):
+        """prints the String representation of an instance
+        usage: show [classname]  [id]
+        """
+        args = line.split()
 
 
 
