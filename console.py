@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" contains entry poiny of the command interpreter """
+""" contains entry point of the command interpreter """
 import cmd
 import re
 from shlex import split
@@ -100,9 +100,6 @@ class HBNBCommand(cmd.Cmd):
                 elif len(argl) == 0:
                     objl.append(obj.__str__())
             print(list_obj)
-
-    
-
 
 
 if __name__ == "__main__":
