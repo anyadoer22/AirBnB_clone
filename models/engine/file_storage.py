@@ -15,12 +15,12 @@ class FileStorage:
     this will operate as a storage engine
 
     Attributess:
-                __file_path: path to json file
-                __objects (dict): store objects by
-                class name
+         __file_path: path to json file
+        __objects (dict): store objects by class name
     """
     __file_path = "file.json"
     __objects = {}
+
     def all(self):
         """return the dictionary of objects"""
         return FileStorage.__objects
