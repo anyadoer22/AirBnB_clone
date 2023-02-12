@@ -10,7 +10,8 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
-    class FileStorage:
+
+class FileStorage:
     """Serialize instances to a JSON file
     this will operate as a storage engine
 
@@ -27,14 +28,14 @@ from models.review import Review
         return FileStorage.__objects
 
     def new(self, obj):
-        """Sets in __objects the obj in the __object with key obj_classname.id"""
+        """Sets in__objects the obj in the__object with key obj_classname.id"""
         clsname = obj.__class__.__name__
         FileStorage.__objects["{}.{}".format(clsname, obj.id)] = obj
 
     def save(self):
-    allobjs = FileStorage.__objects
+        allobjs = FileStorage.__objects
     all_objdicts = {obj: allobjs[obj].to_dict() for obj in allobjs.keys()}
-        with open(FileStorage.__file_path, "w") as f:
+    with open(FileStorage.__file_path, "w") as f:
         json.dump(all_objdicts, f)
 
     def reload(self):
