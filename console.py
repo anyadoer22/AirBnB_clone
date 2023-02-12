@@ -96,11 +96,15 @@ class HBNBCommand(cmd.Cmd):
             list_obj = []
             for obj in storage.all().values():
                 if len(args) > 0 and args[0] == obj.__class__.__name__:
-                    objl.append(obj.__str__())
-                elif len(argl) == 0:
-                    objl.append(obj.__str__())
+                    list_obj.append(obj.__str__())
+                elif len(args) == 0:
+                    list_obj.append(obj.__str__())
             print(list_obj)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1645a46337b5bc544a90deb1f8fbe5320274beb5
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
