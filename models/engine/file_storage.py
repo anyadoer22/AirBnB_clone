@@ -10,7 +10,7 @@ from models.place import Place
 from models.amenity import Amenity
 from models.review import Review
 
-class FileStorage:
+    class FileStorage:
     """Serialize instances to a JSON file
     this will operate as a storage engine
 
@@ -21,6 +21,7 @@ class FileStorage:
     """
     __file_path = "file.json"
     __objects = {}
+
     def all(self):
         """return the dictionary of objects"""
         return FileStorage.__objects
@@ -31,15 +32,16 @@ class FileStorage:
         FileStorage.__objects["{}.{}".format(clsname, obj.id)] = obj
 
     def save(self):
-       allobjs = FileStorage.__objects
-       all_objdicts = {obj: allobjs[obj].to_dict() for obj in allobjs.keys()}
-       with open(FileStorage.__file_path, "w") as f:
-           json.dump(all_objdicts, f)
+    allobjs = FileStorage.__objects
+    all_objdicts = {obj: allobjs[obj].to_dict() for obj in allobjs.keys()}
+        with open(FileStorage.__file_path, "w") as f:
+        json.dump(all_objdicts, f)
+
     def reload(self):
         """Deserialize the Json File"""
         try:
             with open(FileStorage.__file_path) as f:
-                all_objdicts =  json.load(f)
+                all_objdicts = json.load(f)
                 for obj in all_objdicts.values():
                     cls_name = obj["__class__"]
                     del obj["__class__"]
