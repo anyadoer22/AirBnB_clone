@@ -34,7 +34,7 @@ def parse(arg):
 class HBNBCommand(cmd.Cmd):
     """Implement an entry point for managing models"""
 
-    prompt = '(hbnb)'
+    prompt = '(hbnb) '
     __classes = {
         "BaseModel",
         "User",
@@ -46,7 +46,6 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def do_EOF(self, line):
-        """EOF help quit."""
         print("")
         return True
 
