@@ -1,7 +1,7 @@
 # AirBnB_clone
 AirBnB clone - The console
 <p align="center">
-  <img src="https://drive.google.com/file/d/1RmqvobUFvyZ7MkwAecnqNBHx8OqwXm8C/" alt="Backen server for HBnB">
+  <img src="https://github.com/anyadoer22/AirBnB_clone/blob/main/Blank%20diagram%20-%20Page%201%20(1).png" alt="Backen server for HBnB">
 </p>
 
 ## DESCRIPTION 💁
